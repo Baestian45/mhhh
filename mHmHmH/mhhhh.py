@@ -1,24 +1,33 @@
 import random
-import string
 
-def computer():
-    computer_choice = random.randint(1, 3)
-    if computer_choice == 1:
-         computer_move = "rock"
-    elif computer_choice == 2:
-        computer_move = "paper"
-    elif computer_choice == 3:
-        computer_move = "scissors" 
-    return computer_move
-    
-print("\nlets play rock, paper, scissors!")
-user_choice = input("what do u choose?: ")
-computer_move = computer()
+def play_game():
+    choices = ["rock", "paper", "scissors"]
+    player_choice = input("\nEnter Rock, Paper or Scissors: ").lower()
 
-def user(user_choice):
-    if user_choice != "rock" and user_choice != "paper" and user_choice != "scissors":
-        print("choose a valid option (rock, paper, scissors)")
+    if player_choice not in choices:
+        print("Invalid choice. Please choose between rock, paper or scissors")
+        return
 
-user
-print(f"{user_choice}")
-print(f"{computer_move}")
+    computer_choice = random.choice(choices)
+
+    print(f"\nyou chose {player_choice}, the computer chose {computer_choice}")
+
+    if player_choice == computer_choice:
+        print("\nTie!")
+    elif (player_choice == "rock" and computer_choice == "scissors") or \
+         (player_choice == "paper" and computer_choice == "rock") or \
+         (player_choice == "scissors" and computer_choice == "paper"):
+         print("\nYou Win!")
+    else:
+        print("\nLoser :DDD")
+
+def main():
+    while True:
+        play_game()
+        play_again = input("\nDo you wanna play again? (yes/no): ").lower()
+        if play_again != "yes":
+            print("bitch")
+            break 
+        print("\nthanks for playing ig")
+
+main()
